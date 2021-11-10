@@ -1,0 +1,185 @@
+Datarunners' Final Table List and Tables with Fields
+
+Name: Trainers
+
+Type: Data
+
+Description: The Pokemon Trainers who compete in the Elite Four Challenge. This table is important for keeping track of how many trainers compete in the Challenge and background data associated with them so the League can keep the Challenge balanced. 
+
+
+Name: Elite Four
+
+Type: Data (Subset)
+
+Description: The best of the best trainers in the region. These are the trainers that each challenger competes against. This table is important for keeping track of who is the competition in a challenge and at what point trainers will have to battle them. 
+
+
+
+
+Name: Pokemon
+
+Type: Data
+
+Description: The Pokemon partners of the trainers that take part in the Challenge. This table helps the League monitor what trainers use what Pokemon and in what combinations during a Challenge run. 
+
+
+
+
+
+
+
+Name: Hall of Fame Members 
+
+Type: Data (Subset)
+
+Description: The trainers who were successful in their League Challenge and defeated the Elite Four. This table is important for keeping track of the top-of-the-line trainers that succeeded in their quest, an important facet of League balance. 
+
+
+
+
+
+
+
+Name: Shop Items
+
+Type:Data
+
+Description: All the items currently available in the shop. This is important for maintaining shop sales and stock. 
+
+
+
+
+Name: Challenges
+
+Type: Data
+
+Description: All of the individual League Challenges undertaken by each trainer. This table allows the League to track the progress made by each trainer each time they compete to monitor the balance of the competition. 
+
+
+
+
+Name: Sold Items
+
+Type: Linking
+
+Description: The items that have been sold to trainers. This table is important because it allows the League to track what items each trainer has purchased, valuable for monitoring what items the most successful trainers bought. 
+
+
+Name: Pokemon Types
+
+Type: Validation
+
+Description: A table containing all the allowed types a Pokemon can be. This table is important for ensuring no Pokemon is given a type that is invalid or doesn’t exist. 
+
+
+Name: Items Used
+Type: Linking
+
+Description: This table associates a given sold item with the challenge it was used in. This is important for keeping track of historical item use data. 
+
+
+Name: Pokemon Participants
+
+Type: Linking
+
+Description: This table associates a given pokemon with the challenge(s) they have competed in. This is important for keeping statistics on Pokemon use rates. 
+
+
+Name: Pokemon Species Types
+
+Type: Linking
+
+Description: This table is responsible for linking a species to its corresponding type(s). Essentially, this table ensures each Pokemon species has at least one type and that this type is accurate. 
+
+Name: Pokemon Species
+
+Type: Validation
+
+Description: This table is responsible for keeping track of every known species of Pokemon. It functions to ensure that no Pokemon within the Pokemon table is of an invalid species. 
+
+
+
+
+
+
+
+Tables with Fields
+
+Table Name: Trainers (Christian F)
+Fields: 
+	-Trainer_ID(PK)
+	-Trainer_Name (People in Pokemon games only have first names) 
+	-Trainer_Hometown
+	-Trainer_Age
+	-isActive
+
+Table Name: Pokemon (Christian F)
+Fields: 
+	-Pokemon_ID(PK)
+	-Pokemon_Level
+	-Trainer_ID(FK)
+	-Pokemon_Species(FK)
+
+	
+
+Table Name: Elite Four(Christian L)
+Fields:
+	-Trainer_ID(FK)
+	-Elite_Four_Position (IE, what number of the four they are)
+	-Type_Specialty (All elite four members have a pokemon type they specialize in)
+
+Table Name: Hall of Fame (Christian L)
+Fields: 
+	-Hall_of_Fame_ID(PK)
+	-Trainer_ID(FK)
+	-Induction_Date
+
+Table Name: Items (Malachi) 
+Fields:
+	-Item_ID(PK)
+	-Item_Name
+	-Item_Description
+	-Item_Stock
+	-Item_Cost
+	-isActiveItem
+
+Table Name: Challenges(Malachi)
+Fields:
+	-Challenge_ID(PK) 
+	-Challenge_Date
+	-Challenge_Progress_Made
+	-Trainer_ID(FK)
+
+Table Name: Sold Items (Christian L)
+Fields:
+	-Item_Sold_ID (PK)
+	-Item_ID(FK)
+	-Trainer_ID(FK)
+
+
+Table Name: Pokemon Species
+Fields:
+	-Species_Name(PK)
+
+
+Table Name: Pokemon Species Types
+Fields:
+	-Species_Name(FK/CPK)
+	-Type_ID(FK/CPK)
+
+Table Name: Pokemon Types
+Fields:
+	-Type_Name(PK)
+
+Table Name: Items Used
+Fields:
+	-Item_sold_ID(FK/CPK)
+	-Challange_ID(FK/CPK)
+
+Table Name: Pokemon Participants
+Fields:
+	-Challenge_ID(FK/CPK)
+	-Pokemon_ID(FK/CPK)
+
+
+
