@@ -9,8 +9,8 @@
 <?php 
     
     $host = "localhost";
-    $user = "INSERT WEBUSER CREDS"; //REMEMBER TO CHANGE THIS TO WEBUSER CREDENTIALS
-    $pass = "INSERT WEBUSER PASS";
+    $user = "christiansmac"; //REMEMBER TO CHANGE THIS TO WEBUSER CREDENTIALS
+    $pass = "dweedwee";
     $dbse = "pokemon_league";
 
     if (!$conn = new mysqli($host, $user, $pass, $dbse)){
@@ -76,6 +76,16 @@ if(isset($_POST["updateTrainerActive"])) {
     $updatestmt->bind_param('ii', $active,$trainerid);
     $active = $_POST["trainerActiveUpdate"];
     $trainerid = $_POST["trainerActiveID"];
+    $updatestmt->execute();
+    header("Refresh:0");
+}
+
+if(isset($_POST["updateTrainerActive"])) {
+    $updatestmt = $conn->prepare("UPDATE trainers SET isActive = ? WHERE trainer_id = ?;");
+    $updatestmt->bind_param('ii', $active,$trainerid);
+    $active = $_POST["activePick"];
+    $trainerid = $_POST["trainerActiveID"];
+    echo "<p>".$active."</p>";
     $updatestmt->execute();
     header("Refresh:0");
 }
@@ -183,8 +193,12 @@ function result_to_table($res) {
 <form action="trainers.php" method=POST>
 <p>Update Trainer Active </p>
 <input type="text" name="trainerActiveID" placeholder="TrainerID" method=POST/>
-<input type="text" name="trainerActiveUpdate" placeholder="Active? (Enter 1 or 0)" method=POST/>
-<input type="submit" name="updateTrainerActive" value="Update Trainer Active" method=POST/>
+  <label for="activePick">Choose status:</label>
+  <select id="activePick" name="activePick">
+    <option value="1">Active</option>
+    <option value="0">Inactive</option>
+  </select>
+  <input type="submit" name="updateTrainerActive" value="Update Trainer Active" method=POST/>
 </form>
 
 
