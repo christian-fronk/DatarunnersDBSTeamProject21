@@ -7,17 +7,16 @@
     <h1>Trainers</h1>
     
 <?php 
-    
+
     $host = "localhost";
-    $user = "christiansmac"; //REMEMBER TO CHANGE THIS TO WEBUSER CREDENTIALS
-    $pass = "dweedwee";
-    $dbse = "pokemon_league";
+       $user = "WEBUSER CREDS HERE"; //REMEMBER TO CHANGE THIS TO WEBUSER CREDENTIALS
+       $pass = "WEBUSER PASS HERE";
+       $dbse = "pokemon_league";
 
-    if (!$conn = new mysqli($host, $user, $pass, $dbse)){
-        echo "Error: Failed to make a MySQL connection: " . "<br>";
-        echo "Errno: $conn->connect_errno; i.e. $conn->connect_error \n"; exit;
-        }
-
+       if (!$conn = new mysqli($host, $user, $pass, $dbse)){
+           echo "Error: Failed to make a MySQL connection: " . "<br>";
+           echo "Errno: $conn->connect_errno; i.e. $conn->connect_error \n"; exit;
+           }
     
     $gettrainers = "SELECT * FROM trainers;";
     //$bigdelete = "DELETE FROM trainers;";
@@ -35,11 +34,11 @@ $all_results = $result->fetch_all();
 $all_results_rows = $result->num_rows;
 
 if(isset($_POST["insertTrainer"])) {
-    $insertstmt = $conn->prepare("INSERT INTO trainers (trainer_name,trainer_hometown,trainer_age,isActive) VALUES (?,?,?,'1');");
-    $insertstmt->bind_param('ssi', $name,$hometown,$age);
+    $insertstmt = $conn->prepare("INSERT INTO trainers (trainer_name,trainer_hometown,trainer_dob,isActive) VALUES (?,?,?,'1');");
+    $insertstmt->bind_param('sss', $name,$hometown,$dob);
     $name = $_POST["trainerName"];
     $hometown = $_POST["trainerHometown"];
-    $age = $_POST["trainerAge"];
+    $dob = $_POST["trainerDOB"];
     $insertstmt->execute();
     header("Refresh:0");
 }
@@ -71,25 +70,15 @@ if(isset($_POST["updateTrainerAge"])) {
     header("Refresh:0");
 }
 
-if(isset($_POST["updateTrainerActive"])) {
-    $updatestmt = $conn->prepare("UPDATE trainers SET isActive = ? WHERE trainer_id = ?;");
-    $updatestmt->bind_param('ii', $active,$trainerid);
-    $active = $_POST["trainerActiveUpdate"];
-    $trainerid = $_POST["trainerActiveID"];
-    $updatestmt->execute();
-    header("Refresh:0");
-}
-
-if(isset($_POST["updateTrainerActive"])) {
-    $updatestmt = $conn->prepare("UPDATE trainers SET isActive = ? WHERE trainer_id = ?;");
-    $updatestmt->bind_param('ii', $active,$trainerid);
-    $active = $_POST["activePick"];
-    $trainerid = $_POST["trainerActiveID"];
-    echo "<p>".$active."</p>";
-    $updatestmt->execute();
-    header("Refresh:0");
-}
-
+    if(isset($_POST["updateTrainerActive"])) {
+        $updatestmt = $conn->prepare("UPDATE trainers SET isActive = ? WHERE trainer_id = ?;");
+        $updatestmt->bind_param('ii', $active,$trainerid);
+        $active = $_POST["activePick"];
+        $trainerid = $_POST["trainerActiveID"];
+        echo "<p>".$active."</p>";
+        $updatestmt->execute();
+        header("Refresh:0");
+    }
 
 
 //if(isset($_POST["deleteallcheck"])) {
@@ -165,7 +154,7 @@ function result_to_table($res) {
 <p>Add a new Trainer here</p>
 <input type="text" name="trainerName" placeholder="Name" method=POST/>
 <input type="text" name="trainerHometown" placeholder="Hometown" method=POST/>
-<input type="text" name="trainerAge" placeholder="Age" method=POST/>
+<input type="text" name="trainerDOB" placeholder="DOB (YYYY-MM-DD)" method=POST/>
 <input type="submit" name="insertTrainer" value="Add New Trainer" method=POST/>
 </form>
 
@@ -181,13 +170,6 @@ function result_to_table($res) {
 <input type="text" name="trainerHometownID" placeholder="TrainerID" method=POST/>
 <input type="text" name="trainerHometownUpdate" placeholder="Hometown" method=POST/>
 <input type="submit" name="updateTrainerHometown" value="Update Trainer Hometown" method=POST/>
-</form>
-
-<form action="trainers.php" method=POST>
-<p>Update Trainer Age </p>
-<input type="text" name="trainerAgeID" placeholder="TrainerID" method=POST/>
-<input type="text" name="trainerAgeUpdate" placeholder="Age" method=POST/>
-<input type="submit" name="updateTrainerAge" value="Update Trainer Age" method=POST/>
 </form>
 
 <form action="trainers.php" method=POST>
