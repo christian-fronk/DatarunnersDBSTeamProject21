@@ -36,10 +36,10 @@ $all_results_rows = $result->num_rows;
 if(isset($_POST["insertItem"])) {
     $insertstmt = $conn->prepare("INSERT INTO items (item_name,item_description,item_stock,item_cost,isActiveItem) VALUES (?,?,?,?,'1');");
     $insertstmt->bind_param('ssii', $name,$description,$stock,$cost);
-    $name = $_POST["itemName"];
-    $description = $_POST["itemDescription"];
-    $stock = $_POST["itemStock"];
-    $cost = $_POST["itemCost"];
+    $name = htmlspecialchars($_POST["itemName"]);
+    $description = htmlspecialchars($_POST["itemDescription"]);
+    $stock = htmlspecialchars($_POST["itemStock"]);
+    $cost = htmlspecialchars($_POST["itemCost"]);
     $insertstmt->execute();
     header("Refresh:0");
 }
@@ -47,8 +47,8 @@ if(isset($_POST["insertItem"])) {
 if(isset($_POST["updateItemName"])) {
     $updatestmt = $conn->prepare("UPDATE items SET item_name = ? WHERE item_id = ?;");
     $updatestmt->bind_param('si', $name,$itemid);
-    $name = $_POST["itemNameUpdate"];
-    $itemid = $_POST["itemNameID"];
+    $name = htmlspecialchars($_POST["itemNameUpdate"]);
+    $itemid = htmlspecialchars($_POST["itemNameID"]);
     $updatestmt->execute();
     header("Refresh:0");
 }
@@ -56,8 +56,8 @@ if(isset($_POST["updateItemName"])) {
 if(isset($_POST["updateItemDescription"])) {
     $updatestmt = $conn->prepare("UPDATE items SET item_description = ? WHERE item_id = ?;");
     $updatestmt->bind_param('si', $description,$itemid);
-    $description = $_POST["itemDescriptionUpdate"];
-    $itemid = $_POST["itemDescriptionID"];
+    $description = htmlspecialchars($_POST["itemDescriptionUpdate"]);
+    $itemid = htmlspecialchars($_POST["itemDescriptionID"]);
     $updatestmt->execute();
     header("Refresh:0");
 }
@@ -65,8 +65,8 @@ if(isset($_POST["updateItemDescription"])) {
 if(isset($_POST["updateItemStock"])) {
     $updatestmt = $conn->prepare("UPDATE items SET item_stock = ? WHERE item_id = ?;");
     $updatestmt->bind_param('ii', $stock,$itemid);
-    $stock = $_POST["itemStockUpdate"];
-    $itemid = $_POST["itemStockID"];
+    $stock = htmlspecialchars($_POST["itemStockUpdate"]);
+    $itemid = htmlspecialchars($_POST["itemStockID"]);
     $updatestmt->execute();
     header("Refresh:0");
 }
@@ -74,8 +74,8 @@ if(isset($_POST["updateItemStock"])) {
 if(isset($_POST["updateItemCost"])) {
     $updatestmt = $conn->prepare("UPDATE items SET item_cost = ? WHERE item_id = ?;");
     $updatestmt->bind_param('ii', $cost,$itemid);
-    $cost = $_POST["itemCostUpdate"];
-    $itemid = $_POST["itemCostID"];
+    $cost = htmlspecialchars($_POST["itemCostUpdate"]);
+    $itemid = htmlspecialchars($_POST["itemCostID"]);
     $updatestmt->execute();
     header("Refresh:0");
 }
@@ -86,7 +86,7 @@ if(isset($_POST["updateItemActive"])) {
     $updatestmt = $conn->prepare("UPDATE items SET isActiveItem = ? WHERE item_id = ?;");
     $updatestmt->bind_param('ii', $active,$itemid);
     $active = $_POST["activePick"];
-    $itemid = $_POST["itemActiveID"];
+    $itemid = htmlspecialchars($_POST["itemActiveID"]);
     $updatestmt->execute();
     header("Refresh:0");
 }

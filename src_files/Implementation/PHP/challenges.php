@@ -36,9 +36,9 @@ $all_results_rows = $result->num_rows;
 if(isset($_POST["insertChallenge"])) {
     $insertstmt = $conn->prepare("INSERT INTO challenges (challenge_date,challenge_progress_made,trainer_id) VALUES (?,?,?);");
     $insertstmt->bind_param('sii', $date,$progress,$trainer);
-    $date = $_POST["challengeDate"];
-    $progress = $_POST["challengeProgressMade"];
-    $trainer = $_POST["trainerID"];
+    $date = htmlspecialchars($_POST["challengeDate"]);
+    $progress = htmlspecialchars($_POST["challengeProgressMade"]);
+    $trainer = htmlspecialchars($_POST["trainerID"]);
     $insertstmt->execute();
     header("Refresh:0");
 }
@@ -46,7 +46,7 @@ if(isset($_POST["insertChallenge"])) {
 if(isset($_POST["deleteChallenge"])) {
     $updatestmt = $conn->prepare("DELETE FROM challenges WHERE challenge_id = ?;");
     $updatestmt->bind_param('i',$challengeid);
-    $pokemonid = $_POST["challengeDeleteID"];
+    $pokemonid = htmlspecialchars($_POST["challengeDeleteID"]);
     $updatestmt->execute();
     header("Refresh:0");
 }

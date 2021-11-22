@@ -8,8 +8,8 @@
     
 <?php 
     $host = "localhost";
-    $user = "christiansmac"; //REMEMBER TO CHANGE THIS TO WEBUSER CREDENTIALS
-    $pass = "dweedwee";
+    $user = "WEBUSERCREDS"; //REMEMBER TO CHANGE THIS TO WEBUSER CREDENTIALS
+    $pass = "PASSWORD";
     $dbse = "pokemon_league";
 
     if (!$conn = new mysqli($host, $user, $pass, $dbse)){
@@ -35,8 +35,8 @@ $all_results_rows = $result->num_rows;
 if(isset($_POST["insertSoldItem"])) {
     $insertstmt = $conn->prepare("INSERT INTO sold_items (item_id, trainer_id) VALUES (?,?);");
     $insertstmt->bind_param('ii', $item,$trainer);
-    $item = $_POST["iID"];
-    $trainer = $_POST["tID"];
+    $item = htmlspecialchars($_POST["iID"]);
+    $trainer = htmlspecialchars($_POST["tID"]);
     $insertstmt->execute();
     header("Refresh:0");
 }
@@ -44,7 +44,7 @@ if(isset($_POST["insertSoldItem"])) {
 if(isset($_POST["deleteSoldItems"])) {
     $updatestmt = $conn->prepare("DELETE FROM sold_items WHERE item_sold_id = ?;");
     $updatestmt->bind_param('i',$sold);
-    $sold = $_POST["soldItemDeleteID"];
+    $sold = htmlspecialchars($_POST["soldItemDeleteID"]);
     $updatestmt->execute();
     header("Refresh:0");
 }

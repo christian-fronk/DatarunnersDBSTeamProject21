@@ -36,9 +36,9 @@ $all_results_rows = $result->num_rows;
 if(isset($_POST["insertTrainer"])) {
     $insertstmt = $conn->prepare("INSERT INTO trainers (trainer_name,trainer_hometown,trainer_dob,isActive) VALUES (?,?,?,'1');");
     $insertstmt->bind_param('sss', $name,$hometown,$dob);
-    $name = $_POST["trainerName"];
-    $hometown = $_POST["trainerHometown"];
-    $dob = $_POST["trainerDOB"];
+    $name = htmlspecialchars($_POST["trainerName"]);
+    $hometown = htmlspecialchars($_POST["trainerHometown"]);
+    $dob = htmlspecialchars($_POST["trainerDOB"]);
     $insertstmt->execute();
     header("Refresh:0");
 }
@@ -46,8 +46,8 @@ if(isset($_POST["insertTrainer"])) {
 if(isset($_POST["updateTrainerName"])) {
     $updatestmt = $conn->prepare("UPDATE trainers SET trainer_name = ? WHERE trainer_id = ?;");
     $updatestmt->bind_param('si', $name,$trainerid);
-    $name = $_POST["trainerNameUpdate"];
-    $trainerid = $_POST["trainerNameID"];
+    $name = htmlspecialchars($_POST["trainerNameUpdate"]);
+    $trainerid = htmlspecialchars($_POST["trainerNameID"]);
     $updatestmt->execute();
     header("Refresh:0");
 }
@@ -55,8 +55,8 @@ if(isset($_POST["updateTrainerName"])) {
 if(isset($_POST["updateTrainerHometown"])) {
     $updatestmt = $conn->prepare("UPDATE trainers SET trainer_hometown = ? WHERE trainer_id = ?;");
     $updatestmt->bind_param('si', $hometown,$trainerid);
-    $hometown = $_POST["trainerHometownUpdate"];
-    $trainerid = $_POST["trainerHometownID"];
+    $hometown = htmlspecialchars($_POST["trainerHometownUpdate"]);
+    $trainerid = htmlspecialchars($_POST["trainerHometownID"]);
     $updatestmt->execute();
     header("Refresh:0");
 }
@@ -64,8 +64,8 @@ if(isset($_POST["updateTrainerHometown"])) {
 if(isset($_POST["updateTrainerAge"])) {
     $updatestmt = $conn->prepare("UPDATE trainers SET trainer_age = ? WHERE trainer_id = ?;");
     $updatestmt->bind_param('ii', $age,$trainerid);
-    $age = $_POST["trainerAgeUpdate"];
-    $trainerid = $_POST["trainerAgeID"];
+    $age = htmlspecialchars($_POST["trainerAgeUpdate"]);
+    $trainerid = htmlspecialchars($_POST["trainerAgeID"]);
     $updatestmt->execute();
     header("Refresh:0");
 }
@@ -73,8 +73,8 @@ if(isset($_POST["updateTrainerAge"])) {
     if(isset($_POST["updateTrainerActive"])) {
         $updatestmt = $conn->prepare("UPDATE trainers SET isActive = ? WHERE trainer_id = ?;");
         $updatestmt->bind_param('ii', $active,$trainerid);
-        $active = $_POST["activePick"];
-        $trainerid = $_POST["trainerActiveID"];
+        $active = htmlspecialchars($_POST["activePick"]);
+        $trainerid = htmlspecialchars($_POST["trainerActiveID"]);
         echo "<p>".$active."</p>";
         $updatestmt->execute();
         header("Refresh:0");

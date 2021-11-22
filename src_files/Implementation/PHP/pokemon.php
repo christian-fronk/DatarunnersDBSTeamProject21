@@ -36,9 +36,9 @@ $all_results_rows = $result->num_rows;
 if(isset($_POST["insertPokemon"])) {
     $insertstmt = $conn->prepare("INSERT INTO pokemon (pokemon_level,trainer_id,species_name) VALUES (?,?,?);");
     $insertstmt->bind_param('iis', $level,$trainer,$species);
-    $level = $_POST["pokemonLevel"];
-    $trainer = $_POST["trainerID"];
-    $species = $_POST["speciesName"];
+    $level = htmlspecialchars($_POST["pokemonLevel"]);
+    $trainer = htmlspecialchars($_POST["trainerID"]);
+    $species = htmlspecialchars($_POST["speciesName"]);
     $insertstmt->execute();
     header("Refresh:0");
 }
@@ -46,8 +46,8 @@ if(isset($_POST["insertPokemon"])) {
 if(isset($_POST["updatePokemonLevel"])) {
     $updatestmt = $conn->prepare("UPDATE pokemon SET pokemon_level = ? WHERE pokemon_id = ?;");
     $updatestmt->bind_param('ii', $level,$pokemonid);
-    $level = $_POST["pokemonLevelUpdate"];
-    $pokemonid = $_POST["pokemonIDLevel"];
+    $level = htmlspecialchars($_POST["pokemonLevelUpdate"]);
+    $pokemonid = htmlspecialchars($_POST["pokemonIDLevel"]);
     $updatestmt->execute();
     header("Refresh:0");
 }
@@ -55,7 +55,7 @@ if(isset($_POST["updatePokemonLevel"])) {
 if(isset($_POST["deletePokemon"])) {
     $updatestmt = $conn->prepare("DELETE FROM pokemon WHERE pokemon_id = ?;");
     $updatestmt->bind_param('i',$pokemonid);
-    $pokemonid = $_POST["pokemonDeleteID"];
+    $pokemonid = htmlspecialchars($_POST["pokemonDeleteID"]);
     $updatestmt->execute();
     header("Refresh:0");
 }
