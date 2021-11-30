@@ -8,8 +8,8 @@
     
 <?php 
      $host = "localhost";
-     $user = "christiansmac"; //REMEMBER TO CHANGE THIS TO WEBUSER CREDENTIALS
-     $pass = "dweedwee";
+     $user = "WEBUSERCREDS"; //REMEMBER TO CHANGE THIS TO WEBUSER CREDENTIALS
+     $pass = "PASSWORD";
      $dbse = "pokemon_league";
 
      if (!$conn = new mysqli($host, $user, $pass, $dbse)){

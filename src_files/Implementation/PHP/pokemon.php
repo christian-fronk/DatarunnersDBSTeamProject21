@@ -9,7 +9,7 @@
 <?php 
     $host = "localhost";
        $user = "WEBUSERCREDS"; //REMEMBER TO CHANGE THIS TO WEBUSER CREDENTIALS
-       $pass = "WEBUSERPASS";
+       $pass = "PASSWORD";
        $dbse = "pokemon_league";
 
        if (!$conn = new mysqli($host, $user, $pass, $dbse)){
