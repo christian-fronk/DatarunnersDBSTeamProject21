@@ -1,0 +1,24 @@
+body {
+    background-image: url("https://img.itch.zone/aW1nLzYwMjI1NjYucG5n/original/zJksNR.png");
+    background-color: #cccccc;
+   }
+
+   h1{
+    color: white;
+    text-shadow: 0 0 6px black;
+   }
+
+   p{
+       color: white;
+       text-shadow: 0 0 6px black;
+   }
+
+   th{
+    color: white;
+    text-shadow: 0 0 6px black;
+   }
+
+   td{
+    color: white;
+    text-shadow: 0 0 6px black;
+   }

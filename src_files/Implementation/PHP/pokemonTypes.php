@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="basic.css">
+  <link rel="stylesheet" href="pokemontypes.css">
 </head>
 <body>
     <h1>Pokemon Types</h1>

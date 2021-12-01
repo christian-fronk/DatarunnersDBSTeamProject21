@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="basic.css">
+  <link rel="stylesheet" href="halloffame.css">
 </head>
 <body>
     <h1>Hall of Fame</h1>

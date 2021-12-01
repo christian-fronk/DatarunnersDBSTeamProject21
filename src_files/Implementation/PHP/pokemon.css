@@ -1,0 +1,24 @@
+body {
+    background-image: url("https://preview.redd.it/8n8ibpqh56j21.png?auto=webp&s=bf84f16e30d3715225c66bb92c1ff75b79b1fe7e");
+    background-color: #cccccc;
+   }
+
+   h1{
+    color: white;
+    text-shadow: 0 0 6px black;
+   }
+
+   p{
+       color: white;
+       text-shadow: 0 0 6px black;
+   }
+
+   th{
+    color: white;
+    text-shadow: 0 0 6px black;
+   }
+
+   td{
+    color: white;
+    text-shadow: 0 0 6px black;
+   }

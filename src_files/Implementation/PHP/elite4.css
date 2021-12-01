@@ -1,0 +1,24 @@
+body {
+    background-image: url("https://static3.srcdn.com/wordpress/wp-content/uploads/2021/05/Pok--mon-Every-Elite-Four-Ranked-From-Lamest-To-Strongest.jpg?q=50&fit=crop&w=960&h=500&dpr=1.5");
+    background-color: #cccccc;
+   }
+
+   h1{
+    color: white;
+    text-shadow: 0 0 6px black;
+   }
+
+   p{
+       color: white;
+       text-shadow: 0 0 6px black;
+   }
+
+   th{
+    color: white;
+    text-shadow: 0 0 6px black;
+   }
+
+   td{
+    color: white;
+    text-shadow: 0 0 6px black;
+   }

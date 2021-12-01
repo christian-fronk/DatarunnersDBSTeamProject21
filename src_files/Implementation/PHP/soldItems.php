@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="basic.css">
+  <link rel="stylesheet" href="solditems.css">
 </head>
 <body>
     <h1>Sold Items</h1>
