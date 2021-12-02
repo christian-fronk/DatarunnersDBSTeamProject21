@@ -216,6 +216,7 @@ function result_to_table($res) {
   <input type="submit" name="updateItemActive" value="Update Item Active" method=POST/>
 </form>
 
+<a href="/GroupPHP/index.php">Go back</a>
 
 <?php
 }

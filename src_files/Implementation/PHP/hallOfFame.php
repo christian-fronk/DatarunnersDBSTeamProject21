@@ -89,6 +89,9 @@ function result_to_table($res) {
     </table>
 
 
+<a href="/GroupPHP/index.php">Go back</a>
+
+
 <?php
 }
 ?>

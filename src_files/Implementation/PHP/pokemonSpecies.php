@@ -147,6 +147,8 @@ function result_to_table($res) {
 <input type="submit" name="deleteSpecies" value="Delete Species" method=POST/>
 </form>
 
+<a href="/GroupPHP/index.php">Go back</a>
+
 
 <?php
 }
