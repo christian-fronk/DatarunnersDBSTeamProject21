@@ -36,8 +36,8 @@ $all_results_rows = $result->num_rows;
 if(isset($_POST["insertEliteFour"])) {
     $insertstmt = $conn->prepare("INSERT INTO elite_four (elite_four_position, type_specialty) VALUES (?,?);");
     $insertstmt->bind_param('is', $pos,$spec);
-    $pos = $_POST["Epos"];
-    $spec = $_POST["Espec"];
+    $pos = htmlspecialchars($_POST["Epos"]);
+    $spec = htmlspecialchars($_POST["Espec"]);
     $insertstmt->execute();
     header("Refresh:0");
 }
@@ -45,7 +45,7 @@ if(isset($_POST["insertEliteFour"])) {
 if(isset($_POST["deleteEliteFour"])) {
     $updatestmt = $conn->prepare("DELETE FROM elite_four WHERE trainer_id = ?;");
     $updatestmt->bind_param('i',$sold);
-    $sold = $_POST["EliteDeleteID"];
+    $sold = htmlspecialchars($_POST["EliteDeleteID"]);
     $updatestmt->execute();
     header("Refresh:0");
 }
