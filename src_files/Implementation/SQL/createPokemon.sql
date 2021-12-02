@@ -5,5 +5,5 @@ CREATE TABLE pokemon (
     trainer_id        INT NOT NULL,
     FOREIGN KEY (trainer_id) REFERENCES trainers(trainer_id),
     species_name     VARCHAR(32) NOT NULL,
-    FOREIGN KEY (species_name) REFERENCES pokemon_species(species_name)
+    FOREIGN KEY (species_name) REFERENCES pokemon_species(species_name) ON DELETE RESTRICT
 );

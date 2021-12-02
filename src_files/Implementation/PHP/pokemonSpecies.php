@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="pokemontypes.css">
 </head>
 <body>
-    <h1>Pokemon Types</h1>
+    <h1>Pokemon Species</h1>
     
 <?php 
     //Note-This is the version WITHOUT trainer DOB edit
@@ -19,9 +19,9 @@
         }
 
     
-    $getTypes = "SELECT * FROM pokemon_types;";
+    $getSpecies = "SELECT * FROM pokemon_species;";
     //$bigdelete = "DELETE FROM trainers;";
-    $result = $conn->query($getTypes);
+    $result = $conn->query($getSpecies);
 
 // Prepare the delete statement
 //$stmt = $conn->prepare("DELETE FROM trainers WHERE trainer_id = ?;");
@@ -34,18 +34,18 @@
 $all_results = $result->fetch_all();
 $all_results_rows = $result->num_rows;
 
-if(isset($_POST["insertType"])) {
-    $insertstmt = $conn->prepare("INSERT INTO pokemon_types (pokemon_type_name) VALUES (?);");
+if(isset($_POST["insertSpecies"])) {
+    $insertstmt = $conn->prepare("INSERT INTO pokemon_species (species_name) VALUES (?);");
     $insertstmt->bind_param('s',$name);
-    $name = htmlspecialchars($_POST["typeName"]);
+    $name = htmlspecialchars($_POST["speciesName"]);
     $insertstmt->execute();
     header("Refresh:0");
 }
 
-if(isset($_POST["deleteType"])) {
-    $updatestmt = $conn->prepare("DELETE FROM pokemon_types WHERE pokemon_type_name = ?;");
+if(isset($_POST["deleteSpecies"])) {
+    $updatestmt = $conn->prepare("DELETE FROM pokemon_species WHERE species_name = ?;");
     $updatestmt->bind_param('s',$name);
-    $name = htmlspecialchars($_POST["typeNameDelete"]);
+    $name = htmlspecialchars($_POST["speciesNameDelete"]);
     $updatestmt->execute();
     header("Refresh:0");
 }
@@ -81,7 +81,7 @@ if(isset($_POST["deleteType"])) {
 
 
 
-$new_result = $conn->query($getTypes);
+$new_result = $conn->query($getSpecies);
 
 
 result_to_table($new_result);
@@ -102,7 +102,7 @@ function result_to_table($res) {
     <p>
    This table has <?php echo $ncols; ?> columns, and <?php echo $nrows; ?> rows.
     </p>
-<form action="pokemonTypes.php" method=POST>
+<form action="pokemonSpecies.php" method=POST>
         <table>
         <thead>
         <tr>
@@ -135,16 +135,16 @@ function result_to_table($res) {
     </table>
 </form>
 
-<form action="pokemonTypes.php" method=POST>
-<p>Add a new Pokemon type</p>
-<input type="text" name="typeName" placeholder="TypeName" method=POST/>
-<input type="submit" name="insertType" value="Add New Type" method=POST/>
+<form action="pokemonSpecies.php" method=POST>
+<p>Add a new Pokemon species</p>
+<input type="text" name="speciesName" placeholder="SpeciesName" method=POST/>
+<input type="submit" name="insertSpecies" value="Add New Species" method=POST/>
 </form>
 
-<form action="pokemonTypes.php" method=POST>
-<p>Delete Pokemon type</p>
-<input type="text" name="typeNameDelete" placeholder="TypeName" method=POST/>
-<input type="submit" name="deleteType" value="Delete Type" method=POST/>
+<form action="pokemonSpecies.php" method=POST>
+<p>Delete Pokemon species</p>
+<input type="text" name="speciesNameDelete" placeholder="SpeciesName" method=POST/>
+<input type="submit" name="deleteSpecies" value="Delete Species" method=POST/>
 </form>
 
 

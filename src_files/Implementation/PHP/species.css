@@ -1,0 +1,24 @@
+body {
+    background-image: url("http://pm1.narvii.com/6211/c53bdc5f9067b9b0ea77e1f7a454a38aeb983ad1_00.jpg");
+    background-color: #cccccc;
+   }
+
+   h1{
+    color: white;
+    text-shadow: 0 0 6px black;
+   }
+
+   p{
+       color: white;
+       text-shadow: 0 0 6px black;
+   }
+
+   th{
+    color: white;
+    text-shadow: 0 0 6px black;
+   }
+
+   td{
+    color: white;
+    text-shadow: 0 0 6px black;
+   }
