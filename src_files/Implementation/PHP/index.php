@@ -22,6 +22,7 @@
         <li><a href="/GroupPHP/pokemonSpeciesTypes.php">Pokemon Species Types</a></li>
         <li><a href="/GroupPHP/pokemonTypes.php">Pokemon Types</a></li>
         <li><a href="/GroupPHP/pokemonParticipants.php">Pokemon Participants</a></li>
+<li><a href="/GroupPHP/itemsChallenges.php">Items Used in Challenges</a></li>
     </ul>
 </body>
 </html>

@@ -27,6 +27,8 @@ SOURCE createEliteFour.sql;
 
 SOURCE createHallofFame.sql;
 
+SOURCE challengesItemsView.sql;
+
 SET foreign_key_checks = 1;
 
 SOURCE populate_tables.sql;
